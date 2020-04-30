@@ -1,0 +1,29 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Comment Filter{% endblock %}
+
+{% block body %}
+  {{nav.mynavbar.render()}}
+  <div class="container" style="padding-top: 20px; padding-bottom: 20px; background: #ecf0f1; box-shadow: 0 0 5px #7f8c8d">
+    <div class="row">
+      <div class="col-12" style="text-align: right; margin-right: 10px">
+        <a href={{linkvideo}} class="btn btn-success" role="button">Lihat Video</a>
+        <a href="http://localhost:5000/result-table" class="btn btn-success" role="button">Lihat Seluruh Komentar</a>
+      </div>
+    </div>
+    <div class="row" style="margin-left: 10px">
+      <h3> {{request2[0]['title']}}</h3>
+      <img src={{request2[0]['thumbnail']}} class="img-fluid" alt="Responsive image">
+    </div>
+    <div class="row" style="margin-left: 10px; font-size: 20px">
+      <div class="col-sm"> <h3>Deskripsi video</h3><br>{{request2[0]['description']}}</div>
+    </div>
+  </div>
+  <h3 style="margin-left: 10px;">Komentar Video</h3>
+  {% for x, text in request1.items() %}
+  <div class="container" style="background: #ecf0f1; box-shadow: 0 0 5px #7f8c8d; margin-bottom:15px;">
+      <div class="row">
+        <div class="col-sm" style="font-size: 20px"><b>{{text['writer']}}</b><br>{{text['content']}}</div>
+      </div>
+  </div>
+  {%endfor%}
+{%- endblock%}

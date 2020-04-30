@@ -1,0 +1,27 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Comment Filter{% endblock %}
+
+{% block body %}
+  {{nav.mynavbar.render()}}
+  <h3 style="margin-left: 10px;">Hasil Prediksi Komentar</h3>
+  <div class="container" style="padding-top: 20px; padding-bottom: 20px; background: #ecf0f1; box-shadow: 0 0 5px #7f8c8d">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Komentar</th>
+        <th scope="col">Hasil Prediksi</th>
+      </tr>
+    </thead>
+    <tbody>
+  {% for x, text in komentar_prediksi.items() %}
+        <tr>
+          <th scope="row">{{x+1}}</th>
+          <td>{{text["content"]}}</td>
+          <td>{{hasil_prediksi[x]}}</td>
+        </tr>
+  {%endfor%}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
